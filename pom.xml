@@ -92,6 +92,18 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.21</version>
 		</dependency>
+<!-- 		google.common -->
+		<dependency>
+		    <groupId>com.google.collections</groupId>
+		    <artifactId>google-collections</artifactId>
+		    <version>1.0-rc2</version>
+		</dependency>
+<!-- 		apache.commons -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.7</version>
+		</dependency>
 	</dependencies>
   <build>
     <finalName>maven-nathan</finalName>
