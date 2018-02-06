@@ -75,11 +75,39 @@
         </dependency>
 	
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+<!-- 		    <scope>test</scope> -->
 		</dependency>
+		
+		<!-- dbcp2 -->		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.2.0</version>
+		</dependency>
+		
+		<!-- ava.lang.NoClassDefFoundError:org/aspectj/weaver/reflect/ReflectionWorld$ReflectionWorldException
+			缺少的两个jar包：aspectjrt.jar;aspectjweaver.jar ，这是springAOP所依赖的包 -->
+		<dependency>
+		    <groupId>aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>1.5.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.5.3</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>6.0.6</version>
+		</dependency>
+		
 		
 <!-- 		slf4j配置         -->
 		<dependency>
