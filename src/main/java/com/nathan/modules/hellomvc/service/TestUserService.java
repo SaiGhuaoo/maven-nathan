@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.nathan.modules.hellomvc.entity.User;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring-context.xml"})
 public class TestUserService {
@@ -15,10 +17,12 @@ public class TestUserService {
 	
 	@Test
 	public void hasMAtchUser(){
-		boolean b1 = userService.hasMatchUser("admin", "123456");
-		boolean b2 = userService.hasMatchUser("admin", "1111");
+		User user = new User();
+		user.setUserName("admin");
+		user.setPassword("123456");
+		
+		boolean b1 = userService.hasMatchUser(user);
 		Assert.assertTrue(b1);
-//		Assert.assertTrue(b2);
 	}
 	
 	
