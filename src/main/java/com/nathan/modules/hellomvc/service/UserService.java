@@ -1,39 +1,18 @@
 package com.nathan.modules.hellomvc.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.nathan.modules.hellomvc.dao.LoginLogDao;
-import com.nathan.modules.hellomvc.dao.UserDao;
-import com.nathan.modules.hellomvc.entity.LoginLog;
 import com.nathan.modules.hellomvc.entity.User;
 
-@Service
-public class UserService {
-	@Autowired
-	private UserDao userDao;
-	@Autowired
-	private LoginLogDao loginLogDao;
+public interface UserService {
 	
-	public boolean hasMatchUser(String userName,String password){
-		int matchCount = userDao.getMatchCount(userName, password);
-		return matchCount > 0;
-	}
+	public boolean hasMatchUser(User user);
 	
-	public User findUpdateByUserName(String userName){
-		return userDao.findUserByUserName(userName);
-	}
+	public User findUpdateByUserName(User user);
 	
-	public void loginSuccess(User user){
-		user.setCredits(5+user.getCredits());
-		LoginLog loginLog = new LoginLog();
-		loginLog.setUserId(user.getUserId());
-		loginLog.setIp(user.getLastIp());
-		loginLog.setLoginDate(user.getLastVisit());
-		
-		userDao.updateLoginInfo(user);
-		loginLogDao.insertLoginLog(loginLog);
-	}
+	public void loginSuccess(User user);
+	
+	public void insertUser(User user);
+	
+	public void updateUser(User user);
 	
 	
 }

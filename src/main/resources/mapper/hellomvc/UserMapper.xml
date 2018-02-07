@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nathan.modules.hellomvc.dao.mapper.UserMapper">
+	
+	<sql id="userColumns">
+		a.user_id as userId,
+		a.user_name as userName,
+		a.credits as credites,
+		a.password as password,
+		a.last_ip as lastIp,
+		a.last_visit as lastVisit
+	</sql>
+	
+	<select id="getMatchCount" parameterType="com.nathan.modules.hellomvc.entity.User" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM t_user 
+		WHERE user_name=#{userName} and password=#{password}
+	</select>
+	
+	<select id="findUserByUserName" parameterType="com.nathan.modules.hellomvc.entity.User" resultType="com.nathan.modules.hellomvc.entity.User">
+		SELECT 
+			<include refid="userColumns"/>
+		FROM t_user as a
+		WHERE a.user_name=#{userName}
+	</select>
+	
+	<update id="updateLoginInfo" parameterType="com.nathan.modules.hellomvc.entity.User">
+		UPDATE t_user
+			<set>
+				user_id = #{user_id}
+				<if test="lastVisit != null">
+					,last_visit = #{lastVisit}
+				</if>
+				<if test="lastIp != null and lastIp != ''">
+					,last_ip = #{lastIp}
+				</if>
+				<if test="credits != null and credits != ''">
+					,credits = #{credits}
+				</if>
+			</set>
+		WHERE user_id=#{userId}	
+	</update>
+	
+	<insert id="insertUser" parameterType="com.nathan.modules.hellomvc.entity.User">
+		INSERT INTO t_user(user_name,credits,password,last_ip,last_visit)
+		VALUES(#{userName},#{credits},#{password},#{lastIp},#{lastVisit})
+	</insert>
+	
+	<update id="updateUserInfo" parameterType="com.nathan.modules.hellomvc.entity.User">
+		UPDATE t_user
+			<set>
+				<if test="lastVisit !=null">
+					last_visit = #{lastVisit},
+				</if>
+				<if test="lastIp !=null and lastIp !=''">
+					ast_ip = #{lastIp},
+				</if>
+				<if test="credits !=null and credits !=''">
+					credits = #{credits},
+				</if>
+			</set>
+		where user_id=#{userId}
+	</update>
+	
+</mapper>
