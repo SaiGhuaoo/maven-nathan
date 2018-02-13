@@ -15,11 +15,11 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	
 	<!-- 负责启动spring容器的监听器，它将引用context-param处的上下文参数，获得spring配置文件路径 -->
 	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+	<listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
+	</listener>
 	
 	<!-- 配置servlet截取URL请求 -->
 	<servlet>
@@ -33,6 +33,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springServlet</servlet-name>
+		<!-- 对所有请求进行拦截 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
