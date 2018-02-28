@@ -27,9 +27,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 	</bean>
 	
 	<!-- 默认的注解映射 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven/>
 
 	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
 	<mvc:default-servlet-handler/>
 	
+	<!-- 静态资源映射 缓存一年-->
+<!--     <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/> -->
 </beans>
